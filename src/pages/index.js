@@ -4,7 +4,7 @@ import handler from "./api/hello";
 
 export default function Home() {
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(0);
   async function handleClick() {
     const newData = await handler()
     setData(newData);
