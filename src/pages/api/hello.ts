@@ -34,6 +34,20 @@ export default async function hello(
 ) {
 
   let find = req.body
+
+  find = req.body['lookup']
+  if(find.length == 0){
+    console.log('FIND LENGTH')
+    res.status(200).json({
+      newUpdate: {
+        results: [],
+        matches: [],
+        namespace: 'bornacrime'
+      }
+    })
+    return
+  }
+
   const options = {
   method: 'POST',
   url: 'https://api.cohere.ai/v1/embed',
@@ -44,13 +58,13 @@ export default async function hello(
   },
   data: {texts: [find], truncate: 'END', model:'embed-english-light-v2.0'}
 };
-console.log('req: ', req.body)
-console.log('find: ', [find])
+/*console.log('req: ', req.body)
+console.log('find: ', [find])*/
 
 await axios
   .request(options)
   .then(function (response: any) {
-    console.log(response.data.embeddings[0]);
+    //console.log(response.data.embeddings[0]);
     embed = response.data.embeddings[0]
   })
   .catch(function (error: any) {
@@ -59,6 +73,7 @@ await axios
 
   if(pineCone === false){
     pineCone = await loadPinecone()
+
     console.log('loaded pinecone')
   }else console.log('pinecode finished')
 
