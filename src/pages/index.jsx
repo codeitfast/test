@@ -23,7 +23,7 @@ const hf_token = "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";
 const api_url = `https://api-inference.huggingface.co/pipeline/feature-extraction/${model_id}`;
 const headers = { Authorization: `Bearer ${hf_token}` };
 
-async function query(texts:object) {
+async function query(texts) {
   //const data = { inputs: texts, options: { wait_for_model: true } };
   //const response = await fetch(api_url, { headers, method: "POST", body: JSON.stringify(data) });
  // console.log(cohere.tokenize(texts))
@@ -46,7 +46,7 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [encode, setEncode] = useState([])
   const [inputValue,setInputValue] = useState('')
-  async function handleClick(input:string) {
+  async function handleClick(input) {
     
     /*await query([inputValue]).then((embed)=> {
       setEncode(embed)
@@ -71,7 +71,7 @@ export default function Home() {
     }
   }
 
-  async function update(event:any){
+  async function update(event){
     await setInputValue(event.target.value)
     handleClick(event.target.value)
   }

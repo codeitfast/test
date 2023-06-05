@@ -16,7 +16,7 @@ pineconeClient.init({
 });
 console.log('pinecode running')*/
 
-let pineCone = false
+let pineCone:any = false
 
 async function loadPinecone(){
   const pineconeClient = new PineconeClient();
