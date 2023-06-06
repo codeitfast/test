@@ -1,9 +1,14 @@
 import {ImCopy} from 'react-icons/im'
 
 import { asyncLoad } from "../../components/asyncLoad"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PineconeClient } from "@pinecone-database/pinecone";
 import { input } from "@tensorflow/tfjs";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Search from '../../components/search';
+
+import { useRouter } from 'next/router';
 //import Cohere from "cohere-ai"
 //const cohere = require("cohere-ai")
 
@@ -37,6 +42,10 @@ async function query(texts) {
 
 
 export default function Home() {
+
+  const router = useRouter()
+  const { routerQuery } = router.query
+  console.log(routerQuery)
 
   //this pinecone isn't used
   const pineconeClient = new PineconeClient();
@@ -82,24 +91,14 @@ export default function Home() {
     <div>
       <div className="text-5xl absolute right-0 top-0"><ImCopy className="cursor-pointer" onClick={() => {
         navigator.clipboard.writeText(`<div class="jumbotron" style="width: 50%; position: fixed; bottom: 0; right: 0; outline: 1px solid black; border-radius: 20px; max-width: 350px; margin: 10px;">
-    <iframe src="https://cmd-react-as99.vercel.app/" style="border:none; min-height: 400px;" width="100%"></iframe></div>`)
+    <iframe src="https://cmd-react-as99.vercel.app/iframe" style="border:none; min-height: 400px;" width="100%"></iframe></div>`)
     alert('copied!')
     }} /></div>
-    <div className='flex w-screen place-content-center my-8'>
-        <div className="w-11/12 max-w-md absolute mx-auto">
-        <input value={inputValue} placeholder="Keywords, Themes, Etc..." onChange={(event)=>{
-          update(event)
-        //todo: add update function that the button currently does
-        }} className="p-4 border-gray-400 rounded-lg px-4 outline-1 outline-double w-full" />
+
     
-          {(inputValue.length == 0) && <h1 className="font-black text-6xl text-center opacity-50">Start Typing to Search.</h1>}
-          {(data.length == 0 && inputValue.length != 0) && <h1 className="font-black text-6xl text-center opacity-50">Searching...</h1>}
-        {(inputValue.length !== 0) && data.map((book) => {
-          return(<div className="p-2 rounded-md outline outline-1 outline-black my-2 break-words">{book.metadata.text}</div>)
-        })}
+      <div>HOMEPAGE TEST :)</div>
+      {router.query == 'iframe' && <Search inputValue={inputValue} data={data} update={update}/>}
       </div>
-    </div>
-    </div>
   )
 }
 
