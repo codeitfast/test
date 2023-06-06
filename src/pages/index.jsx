@@ -1,3 +1,5 @@
+import {ImCopy} from 'react-icons/im'
+
 import { asyncLoad } from "../../components/asyncLoad"
 import { useState } from "react";
 import { PineconeClient } from "@pinecone-database/pinecone";
@@ -77,6 +79,12 @@ export default function Home() {
   }
   
   return (
+    <div>
+      <div className="text-5xl absolute right-0 top-0"><ImCopy className="cursor-pointer" onClick={() => {
+        navigator.clipboard.writeText(`<div class="jumbotron" style="width: 50%; position: fixed; bottom: 0; right: 0; outline: 1px solid black; border-radius: 20px; max-width: 350px; margin: 10px;">
+    <iframe src="https://cmd-react-as99.vercel.app/" style="border:none; min-height: 400px;" width="100%"></iframe></div>`)
+    alert('copied!')
+    }} /></div>
     <div className='flex w-screen place-content-center my-8'>
         <div className="w-11/12 max-w-md absolute mx-auto">
         <input value={inputValue} placeholder="Keywords, Themes, Etc..." onChange={(event)=>{
@@ -87,9 +95,21 @@ export default function Home() {
           {(inputValue.length == 0) && <h1 className="font-black text-6xl text-center opacity-50">Start Typing to Search.</h1>}
           {(data.length == 0 && inputValue.length != 0) && <h1 className="font-black text-6xl text-center opacity-50">Searching...</h1>}
         {(inputValue.length !== 0) && data.map((book) => {
-          return(<div className="p-2 rounded-md outline outline-1 outline-black my-2">{book.metadata.text}</div>)
+          return(<div className="p-2 rounded-md outline outline-1 outline-black my-2 break-words">{book.metadata.text}</div>)
         })}
       </div>
     </div>
+    </div>
   )
 }
+
+
+/*
+
+
+<div class="jumbotron" style="width: 50%; position: fixed; bottom: 0; right: 0; outline: 1px solid black; border-radius: 20px; max-width: 350px; margin: 10px;">
+    <iframe src="http://localhost:3000" style="border:none; min-height: 400px;" width="100%"></iframe>
+</div>
+
+
+*/
