@@ -97,7 +97,6 @@ export default function Home() {
 
     
       <div>HOMEPAGE TEST :)</div>
-      {router.query == 'iframe' && <Search inputValue={inputValue} data={data} update={update}/>}
       </div>
   )
 }

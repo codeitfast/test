@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PineconeClient } from "@pinecone-database/pinecone";
-import Search from '../../components/search';
+import Search from '../../../components/search';
 
 
 export default function Home() {
@@ -46,7 +46,7 @@ export default function Home() {
   
   return (
     <div>
-      <Search inputValue={inputValue} data={data} update={update}/>}
+      <Search inputValue={inputValue} data={data} update={update}/>
       </div>
   )
 }
