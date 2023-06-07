@@ -9,7 +9,7 @@ export default function Search(props:any){
     
           {(props.inputValue.length == 0) && <h1 className="font-black text-6xl text-center opacity-50">Start Typing to Search.</h1>}
           {(props.data.length == 0 && props.inputValue.length != 0) && <h1 className="font-black text-6xl text-center opacity-50">Searching...</h1>}
-        {(props.inputValue.length !== 0) && props.data.map((book:object) => {
+        {(props.inputValue.length !== 0) && props.data.map((book:any) => {
           return(<div className="p-2 rounded-md outline outline-1 outline-black my-2 break-words">{book.metadata.text}</div>)
         })}
       </div>
