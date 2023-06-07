@@ -1,6 +1,6 @@
 export default function Search(props:any){
     return(
-        <div className='flex w-screen place-content-center my-8'>
+        <div className='flex w-screen place-content-center my-4'>
         <div className="w-11/12 max-w-md absolute mx-auto">
         <input value={props.inputValue} placeholder="Keywords, Themes, Etc..." onChange={(event)=>{
           props.update(event)
