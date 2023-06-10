@@ -3,7 +3,36 @@ import { PineconeClient } from "@pinecone-database/pinecone";
 import Search from '../../../components/search';
 
 
+
+
 export default function Home() {
+  
+  useEffect(()=>{
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  setVh();
+
+  window.addEventListener('resize', () => {
+      setVh();
+  });
+
+  window.addEventListener('scroll', () => {
+      const { scrollTop } = document.documentElement;
+
+      document.documentElement.style.setProperty('--scroll', scrollTop);
+      console.log('runss --> ' + scrollTop)
+      
+      
+      const boxes = document.querySelectorAll('.box');
+      boxes.forEach(box => {
+          const boxHeight = box.offsetHeight;
+          console.log(boxHeight);
+      });
+  });
+  }, [])
 
   //this pinecone isn't used
   const pineconeClient = new PineconeClient();
@@ -46,7 +75,7 @@ export default function Home() {
   
   return (
     <div>
-      <Search inputValue={inputValue} data={data} update={update}/>
+      <Search inputValue={inputValue} data={data} update={update} colors={{back:'#ff00ff', front:'#eeeeee', text:'black'}}/>
       </div>
   )
 }

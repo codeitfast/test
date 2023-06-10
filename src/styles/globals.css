@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --scroll: 0px;
+}
+
+
+/*
+.styled-bubble {
+    background: linear-gradient(to bottom, #4492e5 0%, #007aff 90%, #0057ff 100%);
+}
+
+.container {
+    z-index:-1;
+    background:
+        linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) calc(100% - (100vh - var(--scroll)) * (100 / var(--scroll))), rgba(0,0,0,1) calc(100% - (100vh - var(--scroll)) * (100 / var(--scroll))), rgba(0,0,0,1) 100%);
+}*/
