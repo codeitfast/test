@@ -33,8 +33,8 @@ export function Fakebar(props) {
    <div className={"cursor-pointer shadow-md absolute right-0 rounded-md bg-red-400 transition-all ease-out grid place-items-center " + (open ? 'h-10 w-10 mr-1 mt-1': 'h-16 w-16')} onClick={()=>setOpen(!open)}><BsChatRightText className="h-4/6 w-auto text-white mx-auto my-auto drop-shadow-2xl"/></div>
 
       </div>
-    <div className={"shrink overflow-scroll overflow-x-hidden transition-all ease-out"} style={{backgroundColor: bg, height:384*open}}>
-    <iframe src="https://cmd-react-as99.vercel.app/iframe" style={{border:'none', minHeight: '400px'}} width="100%"></iframe>
+    <div className={"shrink overflow-hidden transition-all ease-out"} style={{backgroundColor: bg, height:384*open}}>
+    <iframe src={"https://cmd-react-as99.vercel.app/iframe/" + bg.substring(1) + '/' + color.substring(1) + '/' + textColor.substring(1)} style={{border:'none', minHeight: '400px'}} width="100%"></iframe>
     </div>
       </div>
   )

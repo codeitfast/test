@@ -3,8 +3,11 @@ import { PineconeClient } from "@pinecone-database/pinecone";
 import Search from '../../../components/search';
 import { useRouter } from 'next/router';
 
+export default function Page() {
 
-export default function Home() {
+  const query = useRouter()
+  let queryColors = query.query.slug
+  console.log(queryColors)
   
   useEffect(()=>{
   const setVh = () => {
@@ -21,14 +24,11 @@ export default function Home() {
   window.addEventListener('scroll', () => {
       const { scrollTop } = document.documentElement;
 
-      document.documentElement.style.setProperty('--scroll', scrollTop);
-      console.log('runss --> ' + scrollTop)
-      
+      document.documentElement.style.setProperty('--scroll', scrollTop);      
       
       const boxes = document.querySelectorAll('.box');
       boxes.forEach(box => {
           const boxHeight = box.offsetHeight;
-          console.log(boxHeight);
       });
   });
   }, [])
@@ -50,7 +50,8 @@ export default function Home() {
 
     const options = {
       method: "POST",
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json',
+      'Accept': 'application/json'},
       body: JSON.stringify({
         lookup:input,
       })//JSON.stringify(encode)
@@ -59,7 +60,7 @@ export default function Home() {
     if(input.length === 0){
       setData([])
     }else{
-      await fetch('api/hello', options).then(response => response.json())
+      await fetch('/api/hello', options).then(response => response.json())
       .then(data => {
         // Access the resolved value of the promise here
         setData(data.newUpdate.matches)
@@ -71,10 +72,10 @@ export default function Home() {
     await setInputValue(event.target.value)
     handleClick(event.target.value)
   }
-  
+
   return (
     <div>
-      <Search inputValue={inputValue} data={data} update={update} colors={{back:'#ff00ff', front:'#eeeeee', text:'black'}}/>
+      {queryColors && <Search inputValue={inputValue} data={data} update={update} colors={{back:'#'+queryColors[0], front:'#'+queryColors[1], text:'#'+queryColors[2]}}/>}
       </div>
   )
 }
