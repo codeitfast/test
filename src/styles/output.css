@@ -661,6 +661,10 @@ video {
   display: none;
 }
 
+.\!h-16 {
+  height: 4rem !important;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -677,6 +681,10 @@ video {
   height: 5rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .h-4\/6 {
   height: 66.666667%;
 }
@@ -689,8 +697,16 @@ video {
   height: auto;
 }
 
-.h-4 {
-  height: 1rem;
+.h-screen {
+  height: 100vh;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.\!w-16 {
+  width: 4rem !important;
 }
 
 .\!w-full {
@@ -699,6 +715,10 @@ video {
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-11 {
+  width: 2.75rem;
 }
 
 .w-11\/12 {
@@ -717,6 +737,10 @@ video {
   width: 6rem;
 }
 
+.w-6 {
+  width: 1.5rem;
+}
+
 .w-6\/12 {
   width: 50%;
 }
@@ -733,16 +757,12 @@ video {
   width: 100%;
 }
 
-.\!w-16 {
-  width: 4rem !important;
+.w-screen {
+  width: 100vw;
 }
 
-.w-11 {
-  width: 2.75rem;
-}
-
-.w-6 {
-  width: 1.5rem;
+.w-\[360px\] {
+  width: 360px;
 }
 
 .max-w-md {
@@ -847,13 +867,13 @@ video {
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
-.bg-transparent {
-  background-color: transparent;
-}
-
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .p-2 {
@@ -938,13 +958,13 @@ video {
   outline-color: #000;
 }
 
-.drop-shadow-2xl {
-  --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+.drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.drop-shadow {
-  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+.drop-shadow-2xl {
+  --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
