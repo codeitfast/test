@@ -11,11 +11,11 @@ import textStyle from '../../components/ahhhh'
 
 
 export function Sidebar(props) {
-  const [open, setOpen, bg, color, textColor, fakeData] = props.load
+  let [open, setOpen, bg, color, textColor, fakeData]  = props.load
   return(
     <div className={"absolute right-0 bottom-0 mx-4 my-4 transition-all ease-out outline outline-1 rounded-lg w-6/12 max-w-sm overflow-hidden " + (open ? 'w-full' : '!w-16')}>
     <div className={"w-full sticky shadow-lg transition-all ease-out " + (open ? 'h-12' : 'h-16')} style={{backgroundColor: bg}}>
-   <div className={"cursor-pointer shadow-md absolute right-0 rounded-md bg-red-400 transition-all ease-out grid place-items-center " + (open ? 'h-10 w-10 mr-1 mt-1': 'h-16 w-16')} onClick={()=>setOpen(!open)}><BsChatRightText className="h-4/6 w-auto text-white mx-auto my-auto drop-shadow-2xl"/></div>
+   <div className={"cursor-pointer shadow-md absolute right-0 rounded-md transition-all ease-out grid place-items-center " + (open ? 'h-10 w-10 mr-1 mt-1': 'h-16 w-16')} onClick={()=>setOpen(!open)} style={{backgroundColor: color}}><BsChatRightText className="h-4/6 w-auto text-white mx-auto my-auto drop-shadow-2xl" style={{color:textColor}}/></div>
 
       </div>
     <div className={"shrink overflow-scroll overflow-x-hidden transition-all ease-out"} style={{backgroundColor: bg, height:384*open}}>
@@ -48,8 +48,6 @@ export default function Home() {
   const [text, setTextColor] = useState('#000000')
   const [css, setCss] = useState('')
 
- console.log(textStyle())
-
   //make this a setstate
   let fakeData = []
   for(let i = 0; i < 10; i ++){
@@ -66,8 +64,8 @@ export default function Home() {
         <img className="cursor-pointer grayscale hover:grayscale-0" 
       onClick={()=> {
         navigator.clipboard.writeText(ReactDOMServer.renderToStaticMarkup(
-          <div style={{width: '360px', height: '800px', position: 'absolute', right: '0px', bottom: '0px', marginRight: '10px', marginBottom: '10px'}}>
-          <iframe src={"https://cmd-react-as99.vercel.app/newIframe/" + bg.substring(1) + '/' + color.substring(1) + '/' + textColor.substring(1)} style={{border:'none', minHeight: '400px'}} width="100%"></iframe>
+          <div style={{width: '360px', position: 'absolute', right: '0px', bottom: '0px', marginRight: '10px', marginBottom: '10px'}}>
+          <iframe src={"https://cmd-react-as99.vercel.app/newIframe/" + bg.substring(1) + '/' + color.substring(1) + '/' + text.substring(1)} style={{border:'none', minHeight: '400px'}} width="100%"></iframe>
         </div>
       ))
       }}
@@ -75,8 +73,8 @@ export default function Home() {
         </div>
 
       <div className="flex w-11/12 max-w-md">
-      <HexColorPicker color={color} onChange={setColor} className="!w-full px-1"/>
       <HexColorPicker color={bg} onChange={setBg} className="!w-full px-1"/>
+      <HexColorPicker color={color} onChange={setColor} className="!w-full px-1"/>
       <HexColorPicker color={text} onChange={setTextColor} className="!w-full px-1"/>
       </div>
 
