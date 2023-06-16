@@ -23,9 +23,8 @@ export default function Search(props:any){
     
           {(props.inputValue.length == 0) && <h1 className="font-black text-6xl text-center opacity-50">Start Typing to Search.</h1>}
           {(props.data.length == 0 && props.inputValue.length != 0) && loadingBox}
-
-          <div className="bg-white text-black p-2 rounded-md shadow-2xl  my-2 break-words styled-bubble box">this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be.</div>
-        {(props.data.length >= 0 && props.inputValue.length !== 0) && props.data.map((book:any, num:any) => {
+          {(props.data.length > 0 && props.inputValue.length !== 0) && <div className="bg-white text-black p-2 rounded-md shadow-2xl  my-2 break-words styled-bubble box">this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be. this is where the ai chat would be.</div>}
+        {(props.data.length > 0 && props.inputValue.length !== 0) && props.data.map((book:any, num:any) => {
           return(<div className="p-2 rounded-md shadow-2xl my-2 break-words styled-bubble box text-white" style={{background: props.colors.front, color: props.colors.text /* filter: 'opacity(calc(calc(var(--scroll) / 100) - ' + num/5 + '))' */}} >{book.metadata.text}</div>)
         })}
       </div>
