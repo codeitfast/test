@@ -11,7 +11,18 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-
+    extend: {
+      keyframes: {
+        wiggle: {
+          "0%": { transform: "translate(0px, 0px)", opacity: .5 },
+          "50%": { color: 'blue', transform: "translate(100px, -100px)", opacity: .6, width:'0px' },
+          "100%": {color: 'blue', transform: "translate(100px, -100px)", opacity: "0", width: "0px"}
+        }
+      },
+      animation: {
+        wiggle: "wiggle 400ms ease-in"
+      }
+    }
   },
   plugins: [],
 }

@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 
 
 export default function Home() {
+
+  const [loadingData, setLoading] = useState(false)
   
   useEffect(()=>{
   const setVh = () => {
@@ -48,6 +50,8 @@ export default function Home() {
       setEncode(embed)
     })*/
 
+    setLoading(true)
+
     const options = {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
@@ -65,16 +69,20 @@ export default function Home() {
         setData(data.newUpdate.matches)
       });
     }
+    setLoading(false)
   }
 
   async function update(event){
     await setInputValue(event.target.value)
-    handleClick(event.target.value)
+    //handleClick(event.target.value)
+  }
+  async function clear(event){
+    await setInputValue('')
   }
   
   return (
     <div>
-      <Search inputValue={inputValue} data={data} update={update} colors={{back:'#ff00ff', front:'#eeeeee', text:'black'}}/>
+      <Search inputValue={inputValue} data={[data, setData]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData} colors={{back:'#ff00ff', front:'#eeeeee', text:'black'}}/>
       </div>
   )
 }
