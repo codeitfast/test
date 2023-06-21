@@ -11,7 +11,7 @@ import textStyle from '../../components/ahhhh'
 
 
 export function Sidebar(props) {
-  let [open, setOpen, bg, color, textColor, fakeData]  = props.load
+  let [open, setOpen, bg, color, textColor, fakeData, handleClick, clear]  = props.load
   return(
     <div className={"absolute right-0 bottom-0 mx-4 my-4 transition-all ease-out outline outline-1 rounded-lg w-6/12 max-w-sm overflow-hidden " + (open ? 'w-full' : '!w-16')}>
     <div className={"w-full sticky shadow-lg transition-all ease-out " + (open ? 'h-12' : 'h-16')} style={{backgroundColor: bg}}>
@@ -19,7 +19,7 @@ export function Sidebar(props) {
 
       </div>
     <div className={"shrink overflow-scroll overflow-x-hidden transition-all ease-out"} style={{backgroundColor: bg, height:384*open}}>
-    <Search className="shrink" inputValue={'lorem ipsum'} data={fakeData} update={undefined} colors={{back:'#ff00ff', front:color, text:textColor}}/>
+    <Search className="shrink" inputValue={'lorem ipsum'} data={[fakeData, useState(false)[1]]} update={undefined} handleClick={handleClick} clear={clear} loadingData={useState(false)[0]} colors={{back:'#ff00ff', front:color, text:textColor}}/>
     </div>
       </div>
   )
@@ -58,6 +58,13 @@ export default function Home() {
     })
   }
 
+  async function clear(event){
+  }
+
+  function handleClick(event){
+    return '2'
+  }
+
   return (
     <div>
       <div className="text-5xl absolute right-0 top-0 w-24 h-auto">
@@ -79,7 +86,7 @@ export default function Home() {
       </div>
 
       <div className="w-[390px] h-[844px]outline outline-1 outline-black rounded-2xl">
-        <Sidebar load={[open, setOpen, bg, color, text, fakeData]}/>
+        <Sidebar load={[open, setOpen, bg, color, text, fakeData, handleClick, clear]}/>
       </div>
     
       </div>

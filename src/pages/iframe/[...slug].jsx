@@ -8,6 +8,9 @@ export default function Page() {
   const query = useRouter()
   let queryColors = query.query.slug
   console.log(queryColors)
+
+  const [loadingData, setLoading] = useState(false)
+
   
   useEffect(()=>{
   const setVh = () => {
@@ -43,6 +46,7 @@ export default function Page() {
   const [data, setData] = useState([]);
   const [inputValue,setInputValue] = useState('')
   async function handleClick(input) {
+    setLoading(true)
     
     /*await query([inputValue]).then((embed)=> {
       setEncode(embed)
@@ -66,16 +70,20 @@ export default function Page() {
         setData(data.newUpdate.matches)
       });
     }
+    setLoading(false)
   }
 
   async function update(event){
     await setInputValue(event.target.value)
-    handleClick(event.target.value)
+    //handleClick(event.target.value)
+  }
+  async function clear(event){
+    await setInputValue('')
   }
 
   return (
     <div>
-      {queryColors && <Search inputValue={inputValue} data={data} update={update} colors={{back:'#'+queryColors[0], front:'#'+queryColors[1], text:'#'+queryColors[2]}}/>}
+      {queryColors && <Search inputValue={inputValue} data={[data, setData]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData}  colors={{back:'#'+queryColors[0], front:'#'+queryColors[1], text:'#'+queryColors[2]}}/>}
       </div>
   )
 }
