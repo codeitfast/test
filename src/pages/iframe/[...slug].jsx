@@ -10,6 +10,8 @@ export default function Page() {
   console.log(queryColors)
 
   const [loadingData, setLoading] = useState(false)
+  const [aiText, setAiText] = useState('This is ai text. This is ai text. This is ai text.')
+  const [prompt, setPrompt] = useState('')
 
   
   useEffect(()=>{
@@ -47,29 +49,27 @@ export default function Page() {
   const [inputValue,setInputValue] = useState('')
   async function handleClick(input) {
     setLoading(true)
-    
-    /*await query([inputValue]).then((embed)=> {
-      setEncode(embed)
-    })*/
 
-    const options = {
-      method: "POST",
-      headers: {'Content-Type': 'application/json',
-      'Accept': 'application/json'},
-      body: JSON.stringify({
-        lookup:input,
-      })//JSON.stringify(encode)
-    }
-    
-    if(input.length === 0){
-      setData([])
-    }else{
-      await fetch('/api/hello', options).then(response => response.json())
-      .then(data => {
-        // Access the resolved value of the promise here
-        setData(data.newUpdate.matches)
-      });
-    }
+    var formData = {
+      query: input,
+      namespace: "bornacrime",
+      index: "books"
+    };
+    await fetch("http://localhost:8000/query", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.response)
+      setData(data.response.documents);
+      setAiText(data.response.result)
+      setPrompt(data.response.query)
+    })
     setLoading(false)
   }
 
@@ -83,7 +83,7 @@ export default function Page() {
 
   return (
     <div>
-      {queryColors && <Search inputValue={inputValue} data={[data, setData]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData}  colors={{back:'#'+queryColors[0], front:'#'+queryColors[1], text:'#'+queryColors[2]}}/>}
+      {queryColors && <Search inputValue={inputValue} data={[data, setData]} writtenText={[aiText, prompt]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData}  colors={{back:'#'+queryColors[0], front:'#'+queryColors[1], text:'#'+queryColors[2]}}/>}
       </div>
   )
 }

@@ -12,6 +12,7 @@ import textStyle from '../../components/ahhhh'
 
 export function Sidebar(props) {
   let [open, setOpen, bg, color, textColor, fakeData, handleClick, clear]  = props.load
+  const [loadingData, set] = useState(false)
   return(
     <div className={"absolute right-0 bottom-0 mx-4 my-4 transition-all ease-out outline outline-1 rounded-lg w-6/12 max-w-sm overflow-hidden " + (open ? 'w-full' : '!w-16')}>
     <div className={"w-full sticky shadow-lg transition-all ease-out " + (open ? 'h-12' : 'h-16')} style={{backgroundColor: bg}}>
@@ -19,7 +20,7 @@ export function Sidebar(props) {
 
       </div>
     <div className={"shrink overflow-scroll overflow-x-hidden transition-all ease-out"} style={{backgroundColor: bg, height:384*open}}>
-    <Search className="shrink" inputValue={'lorem ipsum'} data={[fakeData, useState(false)[1]]} update={undefined} handleClick={handleClick} clear={clear} loadingData={useState(false)[0]} colors={{back:'#ff00ff', front:color, text:textColor}}/>
+    <Search className="shrink" inputValue={'lorem ipsum'} data={[fakeData, useState(false)[1]]} writtenText={['this is the ai text. this is the ai text.', 'lorem ipsum']} update={undefined} handleClick={handleClick} clear={clear} loadingData={loadingData} colors={{back:'#ff00ff', front:color, text:textColor}}/>
     </div>
       </div>
   )
@@ -51,11 +52,7 @@ export default function Home() {
   //make this a setstate
   let fakeData = []
   for(let i = 0; i < 10; i ++){
-    fakeData.push({
-      metadata: {
-        text: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum'
-      }
-    })
+    fakeData.push('lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum')
   }
 
   async function clear(event){

@@ -28,7 +28,7 @@ async function loadPinecone(){
 }
 
 
-export default async function hello(
+export async function hello(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
@@ -94,4 +94,10 @@ await axios
   const data = { newUpdate }
   console.log(data)
   res.status(200).json(data)
+}
+
+export default async function newHello( req: NextApiRequest,
+res: NextApiResponse){
+  let find = req.body
+  
 }

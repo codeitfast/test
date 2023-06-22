@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 export default function Home() {
 
   const [loadingData, setLoading] = useState(false)
+  const [aiText, setAiText] = useState('This is ai text. This is ai text. This is ai text.')
+  const [prompt, setPrompt] = useState('')
   
   useEffect(()=>{
   const setVh = () => {
@@ -52,6 +54,28 @@ export default function Home() {
 
     setLoading(true)
 
+    var formData = {
+      query: input,
+      namespace: "bornacrime",
+      index: "books"
+    };
+    fetch("http://localhost:8000/query", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.response)
+      setData(data.response.documents);
+      setAiText(data.response.result)
+      setPrompt(data.response.query)
+    })
+
+    /*
     const options = {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
@@ -68,7 +92,7 @@ export default function Home() {
         // Access the resolved value of the promise here
         setData(data.newUpdate.matches)
       });
-    }
+    }*/
     setLoading(false)
   }
 
@@ -82,7 +106,7 @@ export default function Home() {
   
   return (
     <div>
-      <Search inputValue={inputValue} data={[data, setData]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData} colors={{back:'#ff00ff', front:'#eeeeee', text:'black'}}/>
+      <Search inputValue={inputValue} data={[data, setData]} writtenText={[aiText, prompt]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData} colors={{back:'#ff00ff', front:'#eeeeee', text:'black'}}/>
       </div>
   )
 }

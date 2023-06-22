@@ -12,15 +12,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animationIterationCount: {
+        '2': '2',
+      },
       keyframes: {
         wiggle: {
-          "0%": { transform: "translate(0px, 0px)", opacity: .5 },
+          "0%": { transform: "translate(0px, 0px)", opacity: 1 },
           "50%": { color: 'blue', transform: "translate(100px, -100px)", opacity: .6, width:'0px' },
-          "100%": {color: 'blue', transform: "translate(100px, -100px)", opacity: "0", width: "0px"}
+          "100%": {color: 'blue', transform: "translate(100px, -100px)", opacity: 1, width: "0px"}
+        },
+        appear: {
+          "0%": {transform: "translate(0px, 0px)", opacity: 0, width: "0px"},
+          "100%": {width: "100%", opacity: 1}
         }
       },
       animation: {
-        wiggle: "wiggle 400ms ease-in"
+        wiggle: "wiggle 400ms ease-in",
+        appear: "appear 400ms ease-out 2s" //ahhhh this isn't running and I have no idea why
       }
     }
   },
