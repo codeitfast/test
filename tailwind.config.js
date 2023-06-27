@@ -12,6 +12,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'Atom': '#282C34',
+      },
       animationIterationCount: {
         '2': '2',
       },
@@ -32,5 +35,5 @@ module.exports = {
       }
     }
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }

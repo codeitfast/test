@@ -30,7 +30,7 @@ export default function Search(props:any){
           //todo: add update function that the button currently does
           }} className={`transition-all w-full p-4 border-gray-400 rounded-lg px-4 outline outline-1 outline-black ${err && 'outline outline-2 outline-red-600'} disabled:bg-gray-100 disabled:placeholder-gray-400 disabled:text-gray-700`} style={{backgroundColor: 'white' }}/>
 
-    <button className={`transition-all rounded-md absolute top-0 bottom-0 my-auto right-2 h-10 w-10`} onClick={()=>{
+    <button className={`rounded-md absolute top-0 bottom-0 my-auto right-2 h-10 w-10`} onClick={()=>{
 
 
       if(props.inputValue != ''){
