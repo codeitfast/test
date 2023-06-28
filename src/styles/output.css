@@ -2023,6 +2023,14 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
 .\!w-16 {
   width: 4rem !important;
 }
@@ -2197,6 +2205,10 @@ details.collapse summary::-webkit-details-marker {
 
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .truncate {
