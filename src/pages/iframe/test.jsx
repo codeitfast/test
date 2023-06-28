@@ -71,7 +71,7 @@ export default function SearchComponent(props) {
   async function clear(event){
     await setInputValue('')
   }
-  
+
 
   return (
     <div>
