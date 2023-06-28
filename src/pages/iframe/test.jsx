@@ -72,6 +72,7 @@ export default function SearchComponent(props) {
     await setInputValue('')
   }
   
+
   return (
     <div>
       <Search inputValue={inputValue} data={[data, setData]} writtenText={[aiText, prompt]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData} colors={{back:props.back, front:props.front, text:props.text}}/>
