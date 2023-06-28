@@ -2179,10 +2179,6 @@ details.collapse summary::-webkit-details-marker {
   align-items: center;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -2332,6 +2328,10 @@ details.collapse summary::-webkit-details-marker {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.pl-0 {
+  padding-left: 0px;
 }
 
 .text-center {
@@ -2540,11 +2540,6 @@ details.collapse summary::-webkit-details-marker {
     background:
         linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) calc(100% - (100vh - var(--scroll)) * (100 / var(--scroll))), rgba(0,0,0,1) calc(100% - (100vh - var(--scroll)) * (100 / var(--scroll))), rgba(0,0,0,1) 100%);
 }*/
-
-.hover\:grayscale-0:hover {
-  --tw-grayscale: grayscale(0);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
 
 .focus\:outline-none:focus {
   outline: 2px solid transparent;

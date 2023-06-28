@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {BsFillPersonFill, BsFillChatRightTextFill, BsChatLeftText, BsChatRightText} from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import Search from '../../../components/search'
+import SearchComponent from '../iframe/test'
 
 function Fakebar(props) {
     const [open, setOpen, bg, color, textColor, fakeData] = props.load
@@ -14,7 +15,7 @@ function Fakebar(props) {
   
         </div>
       <div className={"shrink overflow-hidden transition-all ease-out h-screen"} style={{backgroundColor: bg}}>
-      <iframe className="h-screen" src={"https://cmd-react-as99.vercel.app/iframe/" + bg.substring(1) + '/' + color.substring(1) + '/' + textColor.substring(1)} style={{border:'none'}} width="100%"></iframe>
+      <SearchComponent back={bg} front={color} text={textColor}/>
       </div>
         </div>
 

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { PineconeClient } from "@pinecone-database/pinecone";
 import Search from '../../../components/search';
-import { useRouter } from 'next/router';
 
 
-export default function Home() {
+export default function SearchComponent(props) {
 
   const [loadingData, setLoading] = useState(false)
   const [aiText, setAiText] = useState('This is ai text. This is ai text. This is ai text.')
@@ -36,13 +34,6 @@ export default function Home() {
       });
   });
   }, [])
-
-  //this pinecone isn't used
-  const pineconeClient = new PineconeClient();
-  pineconeClient.init({
-      environment: "us-central1-gcp",
-      apiKey: "deaf3c5e-9b6f-4cae-bc93-94c7b7c0edd1",
-  });
 
   const [data, setData] = useState([]);
   const [inputValue,setInputValue] = useState('')
@@ -83,7 +74,7 @@ export default function Home() {
   
   return (
     <div>
-      <Search inputValue={inputValue} data={[data, setData]} writtenText={[aiText, prompt]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData} colors={{back:'#ff00ff', front:'#eeeeee', text:'black'}}/>
+      <Search inputValue={inputValue} data={[data, setData]} writtenText={[aiText, prompt]} update={update} handleClick={handleClick} clear={clear} loadingData={loadingData} colors={{back:props.back, front:props.front, text:props.text}}/>
       </div>
   )
 }

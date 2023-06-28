@@ -49,10 +49,10 @@ export default function HexColors({bg, setBg, color, setColor, text, setTextColo
 
 
     <div><h4 className="font-bold text-md">Copy and Paste:</h4>
-    <div className="rounded-2xl bg-Atom break-all col-start-1 row-start-1 flex items-start justify-end p-2">
+    <div className="rounded-2xl bg-Atom break-all col-start-1 row-start-1 flex items-start justify-center p-2">
     {selected == 'simple' && simple}
 
-    <div className=""><FaRegCopy className="text-2xl ml-4 cursor-pointer text-white" onClick={()=>{
+    <div className="p-2 pl-0"><FaRegCopy className="text-2xl ml-4 cursor-pointer text-white" onClick={()=>{
       navigator.clipboard.writeText(simpleCode(bg, color, text))
     }}/></div>
 

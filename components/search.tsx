@@ -47,6 +47,7 @@ export default function Search(props:any){
 
     {!props.loadingData && (props.data[0].length == 0) && <h1 className="font-black text-6xl text-center opacity-50">Start Typing to Search.</h1>}
     {props.loadingData && loadingBox}
+    {props.loadingData}
     
     {!props.loadingData && props.data[0].length > 0 && <div className="bg-blue-500 rounded-md shadow-2xl my-2 styled-bubble box p-2">{props.writtenText[1]}</div>}
           {!props.loadingData && (props.data[0].length > 0) && <div className="bg-white text-black p-2 rounded-md shadow-2xl my-2 break-words styled-bubble box">{props.writtenText[0]}</div>}
