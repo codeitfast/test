@@ -18,7 +18,7 @@ function simpleCode(bg, color, text){
   return(
     ReactDOMServer.renderToStaticMarkup(
       <div style={{width: '360px', position: 'absolute', right: '0px', bottom: '0px', marginRight: '10px', marginBottom: '10px'}}>
-      <iframe src={"https://cmd-react-as99.vercel.app/newIframe/" + bg.substring(1) + '/' + color.substring(1) + '/' + text.substring(1)} style={{border:'none', minHeight: '400px'}} width="100%"></iframe>
+      <iframe src={"https://new-cmd-3gs1.vercel.app/newIframe/" + bg.substring(1) + '/' + color.substring(1) + '/' + text.substring(1)} style={{border:'none', minHeight: '400px'}} width="100%"></iframe>
     </div>
   )
   )
