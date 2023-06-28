@@ -16,13 +16,13 @@ pineconeClient.init({
 });
 console.log('pinecode running')*/
 
-let pineCone:any = false
+let pineCone: any = false
 
-async function loadPinecone(){
+async function loadPinecone() {
   const pineconeClient = new PineconeClient();
   await pineconeClient.init({
-      environment: "us-central1-gcp",
-      apiKey: "deaf3c5e-9b6f-4cae-bc93-94c7b7c0edd1",
+    environment: "us-central1-gcp",
+    apiKey: "deaf3c5e-9b6f-4cae-bc93-94c7b7c0edd1",
   });
   return pineconeClient
 }
@@ -36,7 +36,7 @@ export async function hello(
   let find = req.body
 
   find = req.body['lookup']
-  if(find.length == 0){
+  if (find.length == 0) {
     console.log('FIND LENGTH')
     res.status(200).json({
       newUpdate: {
@@ -49,33 +49,33 @@ export async function hello(
   }
 
   const options = {
-  method: 'POST',
-  url: 'https://api.cohere.ai/v1/embed',
-  headers: {
-    accept: 'application/json',
-    'content-type': 'application/json',
-    authorization: `Bearer ${apiKey}`,
-  },
-  data: {texts: [find], truncate: 'END', model:'embed-english-light-v2.0'}
-};
-/*console.log('req: ', req.body)
-console.log('find: ', [find])*/
+    method: 'POST',
+    url: 'https://api.cohere.ai/v1/embed',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      authorization: `Bearer ${apiKey}`,
+    },
+    data: { texts: [find], truncate: 'END', model: 'embed-english-light-v2.0' }
+  };
+  /*console.log('req: ', req.body)
+  console.log('find: ', [find])*/
 
-await axios
-  .request(options)
-  .then(function (response: any) {
-    //console.log(response.data.embeddings[0]);
-    embed = response.data.embeddings[0]
-  })
-  .catch(function (error: any) {
-    console.error(error);
-  });
+  await axios
+    .request(options)
+    .then(function (response: any) {
+      //console.log(response.data.embeddings[0]);
+      embed = response.data.embeddings[0]
+    })
+    .catch(function (error: any) {
+      console.error(error);
+    });
 
-  if(pineCone === false){
+  if (pineCone === false) {
     pineCone = await loadPinecone()
 
     console.log('loaded pinecone')
-  }else console.log('pinecode finished')
+  } else console.log('pinecode finished')
 
   /*let embed = req.body
   embed = embed[0]*/
@@ -83,10 +83,10 @@ await axios
 
   const index = pineCone.Index('books');
   const queryRequest = {
-      vector: embed,
-      topK: 10,
-      namespace: 'bornacrime',
-      includeMetadata: true
+    vector: embed,
+    topK: 10,
+    namespace: 'bornacrime',
+    includeMetadata: true
   }
   const newUpdate = await index.query({ queryRequest })
   //console.log(newUpdate)
@@ -96,8 +96,8 @@ await axios
   res.status(200).json(data)
 }
 
-export default async function newHello( req: NextApiRequest,
-res: NextApiResponse){
+export default async function newHello(req: NextApiRequest,
+  res: NextApiResponse) {
   let find = req.body
-  
+
 }

@@ -2,57 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --scroll: 0px;
+:root {
+  --scroll: 0px;
 }
 
-.react-colorful__hue{
-    border-radius: 0px !important;
+.react-colorful__hue {
+  border-radius: 0px !important;
 }
 
 .react-syntax-highlighter-code {
-background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .react-syntax-highlighter-line-number {
-    display: inline-block;
-    width: 20px;
-    user-select: none;
-  }
-  
-  .react-syntax-highlighter-line-number::before {
-    content: attr(data-rsh-line-number) !important;
-  }
-  
-  .react-syntax-highlighter-code {
-    display: inline-block;
-    width: calc(100% - 20px);
-    word-break: break-all;
-  }
+  display: inline-block;
+  width: 20px;
+  user-select: none;
+}
 
-  .react-syntax-highlighter-line-number {
-    display: inline-block;
-    width: 20px;
-    user-select: none;
-  }
-  
-  .react-syntax-highlighter-line-number::before {
-    content: attr(data-rsh-line-number) !important;
-  }
-  
-  .react-syntax-highlighter-code {
-    display: inline-block;
-    width: calc(100% - 20px);
-    word-wrap: break-word;
-  }
+.react-syntax-highlighter-line-number::before {
+  content: attr(data-rsh-line-number) !important;
+}
 
-  .react-syntax-highlighter {
-    background-color: transparent !important;
-  }
-  
-  .react-syntax-highlighter-code {
-    word-wrap: break-word !important;
-  }
+.react-syntax-highlighter-code {
+  display: inline-block;
+  width: calc(100% - 20px);
+  word-break: break-all;
+}
+
+.react-syntax-highlighter-line-number {
+  display: inline-block;
+  width: 20px;
+  user-select: none;
+}
+
+.react-syntax-highlighter-line-number::before {
+  content: attr(data-rsh-line-number) !important;
+}
+
+.react-syntax-highlighter-code {
+  display: inline-block;
+  width: calc(100% - 20px);
+  word-wrap: break-word;
+}
+
+.react-syntax-highlighter {
+  background-color: transparent !important;
+}
+
+.react-syntax-highlighter-code {
+  word-wrap: break-word !important;
+}
 
 /*
 .styled-bubble {

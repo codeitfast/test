@@ -2015,20 +2015,25 @@ details.collapse summary::-webkit-details-marker {
   height: 12rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-auto {
   height: auto;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .h-screen {
   height: 100vh;
 }
 
-.h-2 {
-  height: 0.5rem;
-}
-
-.h-8 {
-  height: 2rem;
+.max-h-\[432\] {
+  max-height: 432;
 }
 
 .\!w-16 {
@@ -2077,6 +2082,11 @@ details.collapse summary::-webkit-details-marker {
 
 .w-auto {
   width: auto;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .w-full {
@@ -2486,11 +2496,11 @@ details.collapse summary::-webkit-details-marker {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-:root{
+:root {
   --scroll: 0px;
 }
 
-.react-colorful__hue{
+.react-colorful__hue {
   border-radius: 0px !important;
 }
 
