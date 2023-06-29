@@ -1,8 +1,3 @@
-import { AiOutlineLoading3Quarters } from 'react-icons/ai'
-import { useState, useEffect } from 'react'
-
-
-
 import Searchbar from './search-components/searchbar'
 import LoadingMessage from './search-components/loading-message'
 import ShowQuestion from './search-components/show-question'
