@@ -1,12 +1,4 @@
-import { ImCopy } from 'react-icons/im'
-import { AiFillCaretDown, AiFillCaretUp, AiOutlineDownload } from 'react-icons/ai'
-import { useRouter } from 'next/router';
-import Search from '../../components/search';
 import { useState, useEffect } from 'react'
-import { BsFillPersonFill, BsFillChatRightTextFill, BsChatLeftText, BsChatRightText } from 'react-icons/bs'
-import ReactDOMServer from 'react-dom/server';
-
-import { BiSolidDownload } from 'react-icons/bi'
 
 import Sidebar from '../../components/sidebar'
 import Fakebar from '../../components/fakebar'
@@ -19,16 +11,14 @@ export default function Home() {
   const [color, setColor] = useState("#aabbcc");
   const [bg, setBg] = useState('#ffffff')
   const [text, setTextColor] = useState('#000000')
-  const [css, setCss] = useState('')
 
   const [xPos, setXPos] = useState(384)
-  const handleDrag = (e, ui) => {
-    setXPos(ui.x);
-  };
   const [yPos, setYPos] = useState(500)
-  const handleDragUp = (e, ui) => {
-    setYPos(ui.y)
-  }
+  const handleDrag = (e, ui) => {
+      setXPos(ui.x);   
+      setYPos(ui.y)
+  };
+
 
   //make this a setstate
   let fakeData = []
@@ -52,22 +42,20 @@ export default function Home() {
         </div>
 
 
-
-        <div className="block">
+      <div className="block">
+        <div className="flex">
           <div className={`relative outline outline-1 outline-black rounded-md`} style={{ width: xPos, height: yPos }}>
-
-            <Draggable axis="y" onDrag={handleDragUp} defaultPosition={{ y: yPos, x: -40 }}>
-              <div className="w-10 h-10 bg-slate-400 rounded-full rounded-tr-md cursor-pointer text-center right-10 flex items-center justify-center">{yPos}</div>
-            </Draggable>
 
             <Sidebar load={[open, setOpen, bg, color, text, fakeData, handleClick, clear]} />
 
           </div>
-          <Draggable axis="x" onDrag={handleDrag} defaultPosition={{ x: xPos, y: 0 }}>
-            <div className="w-10 h-10 bg-slate-400 rounded-full rounded-tl-sm cursor-pointer text-center flex items-center justify-center">←{xPos}→</div>
+          <Draggable axis="y" onDrag={handleDrag} defaultPosition={{ x: 0, y: yPos }} bounds={{left:108, top: 500}}>
+            <div className="w-4 h-4 bg-slate-400 rounded-full cursor-pointer text-center flex items-center justify-center"></div>
           </Draggable>
-        </div>
 
+        </div>
+        <div style={{width: xPos}} className="flex justify-center items-center place-content-center"><input value={xPos} className="text-center w-3/6" onChange={(event)=>setXPos(event.target.value)} />x<input value={yPos} className="text-center w-3/6" onChange={(event)=>setYPos(event.target.value)} /></div>
+        </div>
       </div>
     </div>
 

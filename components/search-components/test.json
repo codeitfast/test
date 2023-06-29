@@ -1,0 +1,56 @@
+{
+    "109":
+    {
+        "component-color": "#ff00ff",
+        "background-color": "#000000",
+        "text-color": "#ffffff",
+        "components": [
+            {
+                "type": "search-bar",
+                "special-styles": "outline: 'red', boxShadow: 'none'",
+                "placeholder": "start typing to search"
+            },
+            {
+                "type": "loading-message",
+                "placeholder": "start typing to search",
+                "format": "textarea",
+                "max-characters": 300
+            },
+            {
+                "type": "show-question",
+                "special-styles": "background: 'blue'"
+            },
+            {
+                "type": "response",
+                "placeholder": "",
+                "animation": "ai-typing"
+            },
+            {
+                "type": "sources",
+                "format": "stacked"
+            }
+        ]
+    },
+    "110":
+    {
+        "component-color": "#00ff00",
+        "background-color": "#0f0f0f",
+        "text-color": "#f0f0f0",
+        "components": [
+            {
+                "type": "search-bar",
+                "special-styles": "outline: 'red', boxShadow: 'none'",
+                "placeholder": "start typing to search"
+            },
+            {
+                "type": "response",
+                "placeholder": "",
+                "animation": "ai-typing"
+            },
+            {
+                "type": "sources",
+                "format": "stacked"
+            }
+        ]
+    }
+}

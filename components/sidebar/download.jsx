@@ -24,7 +24,7 @@ export default function Download(props) {
 
   return (
     <div>
-      <button className="btn" onClick={() => window.my_modal_2.showModal()}><AiOutlineDownload />Download Popup</button>
+      <button className="btn btn-primary" onClick={() => window.my_modal_2.showModal()}><AiOutlineDownload />Download Popup</button>
       <dialog id="my_modal_2" className="modal">
         <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">Download your popup:</h3>

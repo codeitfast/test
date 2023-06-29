@@ -7,7 +7,6 @@ export default function HexColors({bg, setBg, color, setColor, text, setTextColo
     return(
     <div>
 
-      <Download color={color} bg={bg} text={text} />
 
     <div className="px-1">
         <p className="text-center">Background</p>
@@ -48,6 +47,10 @@ export default function HexColors({bg, setBg, color, setColor, text, setTextColo
         }
       }/>
       </div>
+
+      <br/>
+      <Download color={color} bg={bg} text={text} />
+
       </div>
       
     )
